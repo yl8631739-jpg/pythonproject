@@ -1,0 +1,25 @@
+- baseInfo:
+    api_name: 校验订单状态
+    url: /coupApply/cms/checkOrderStatus
+    method: post
+    header:
+      Content-Type: application/json;charset=UTF-8
+  testCase:
+    - case_name: 正常校验订单状态
+      json:
+        orderNumber: ${get_extract_data(orderNumber)}
+        timeStamp: ${timestamp()}
+      validation:
+        - eq: { 'error_code': '0000' }
+        - contains: { 'status' }
+    - case_name: 校验订单状态-缺少订单号
+      json:
+        timeStamp: ${timestamp()}
+      validation:
+        - contains: { 'error_code' }
+    - case_name: 校验订单状态-不存在的订单号
+      json:
+        orderNumber: 'NON_EXIST_ORDER_99999'
+        timeStamp: ${timestamp()}
+      validation:
+        - contains: { 'error_code' }

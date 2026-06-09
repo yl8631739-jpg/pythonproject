@@ -1,0 +1,23 @@
+- baseInfo:
+    api_name: 分布式Token同步会话
+    url: /coupApply/cms/selectToken
+    method: post
+    header:
+      Content-Type: application/json;charset=UTF-8
+  testCase:
+    - case_name: 正常同步Token会话
+      json:
+        userId: ${get_extract_data(userId)}
+        token: ${get_extract_data(token)}
+      validation:
+        - eq: { 'error_code': '0000' }
+    - case_name: 同步Token-缺少userId
+      json:
+        token: ${get_extract_data(token)}
+      validation:
+        - contains: { 'error_code' }
+    - case_name: 同步Token-缺少token
+      json:
+        userId: ${get_extract_data(userId)}
+      validation:
+        - contains: { 'error_code' }

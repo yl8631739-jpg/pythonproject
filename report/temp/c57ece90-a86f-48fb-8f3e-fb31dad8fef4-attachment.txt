@@ -1,0 +1,16 @@
+[32mINFO    [0m common.recordlog:conftest.py:20 -------------接口测试开始--------------
+[1m[31mERROR   [0m common.recordlog:readyaml.py:113 【extract.yaml】没有找到：cookie,--'cookie'
+[1m[31mERROR   [0m common.recordlog:readyaml.py:113 【extract.yaml】没有找到：cookie,--'cookie'
+[32mINFO    [0m common.recordlog:sendrequest.py:135 接口名称：商品列表
+[32mINFO    [0m common.recordlog:sendrequest.py:136 请求地址：http://127.0.0.1:8787/coupApply/cms/goodsList
+[32mINFO    [0m common.recordlog:sendrequest.py:137 请求方式：Get
+[32mINFO    [0m common.recordlog:sendrequest.py:138 测试用例名称：获取商品列表-缺少msgType参数
+[32mINFO    [0m common.recordlog:sendrequest.py:139 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', 'token': 'None'}
+[32mINFO    [0m common.recordlog:sendrequest.py:140 Cookie：None
+[32mINFO    [0m common.recordlog:sendrequest.py:150 请求参数：{'params': {'page': 1, 'size': 20}}
+[32mINFO    [0m common.recordlog:sendrequest.py:108 接口返回信息：{"error_code":"9001","msg":"参数错误"}
+
+[32mINFO    [0m common.recordlog:assertions.py:181 yaml文件预期结果：[{'contains': {'error_code': None}}]
+[1m[31mERROR   [0m common.recordlog:assertions.py:210 接口断言异常，请检查yaml预期结果值是否正确填写!
+[1m[31mERROR   [0m common.recordlog:apiutil.py:123 'in <string>' requires string as left operand, not NoneType
+[32mINFO    [0m common.recordlog:conftest.py:22 -------------接口测试结束--------------

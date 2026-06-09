@@ -1,0 +1,26 @@
+- baseInfo:
+    api_name: 用户查询
+    url: /dar/user/queryUser
+    method: POST
+    header:
+      Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+  testCase:
+    - case_name: 有效查询用户
+      data:
+        user_id: 123839387391912
+      validation:
+        - contains: { 'msg': '查询成功' }
+        - eq: { 'msg_code': 200 }
+    - case_name: 查询用户-用户ID不存在
+      data:
+        user_id: '999999999999999'
+      validation:
+        - contains: { 'msg': '查询失败' }
+    - case_name: 查询用户-用户ID为空
+      data:
+        user_id:
+      validation:
+        - contains: { 'msg': '查询失败' }
+    - case_name: 查询用户-缺少必填参数
+      validation:
+        - contains: { 'msg': '查询失败' }

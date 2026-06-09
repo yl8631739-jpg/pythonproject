@@ -1,0 +1,23 @@
+- baseInfo:
+    api_name: 商品删除
+    url: /coupApply/cms/deleteProduct
+    method: post
+    header:
+      Content-Type: application/json;charset=UTF-8
+  testCase:
+    - case_name: 正常删除商品
+      json:
+        goodsId: ${get_extract_data(goodsId,0)}
+      validation:
+        - eq: { 'error_code': '0000' }
+        - eq: { 'message': '删除成功' }
+    - case_name: 删除商品-缺少商品ID
+      json:
+        goodsId:
+      validation:
+        - contains: { 'error_code' }
+    - case_name: 删除商品-不存在的商品ID
+      json:
+        goodsId: '999999999'
+      validation:
+        - contains: { 'error_code' }

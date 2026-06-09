@@ -1,0 +1,14 @@
+[32mINFO    [0m common.recordlog:conftest.py:20 -------------接口测试开始--------------
+[32mINFO    [0m common.recordlog:sendrequest.py:135 接口名称：校验订单状态
+[32mINFO    [0m common.recordlog:sendrequest.py:136 请求地址：http://127.0.0.1:8787/coupApply/cms/checkOrderStatus
+[32mINFO    [0m common.recordlog:sendrequest.py:137 请求方式：post
+[32mINFO    [0m common.recordlog:sendrequest.py:138 测试用例名称：校验订单状态-缺少订单号
+[32mINFO    [0m common.recordlog:sendrequest.py:139 请求头：{'Content-Type': 'application/json;charset=UTF-8'}
+[32mINFO    [0m common.recordlog:sendrequest.py:140 Cookie：None
+[32mINFO    [0m common.recordlog:sendrequest.py:147 请求参数：{'json': {'timeStamp': '1780998055'}}
+[32mINFO    [0m common.recordlog:sendrequest.py:108 接口返回信息：{"error":"订单编号不存在","error_code":"4000"}
+
+[32mINFO    [0m common.recordlog:assertions.py:181 yaml文件预期结果：[{'contains': {'error_code': None}}]
+[1m[31mERROR   [0m common.recordlog:assertions.py:210 接口断言异常，请检查yaml预期结果值是否正确填写!
+[1m[31mERROR   [0m common.recordlog:apiutil.py:123 'in <string>' requires string as left operand, not NoneType
+[32mINFO    [0m common.recordlog:conftest.py:22 -------------接口测试结束--------------

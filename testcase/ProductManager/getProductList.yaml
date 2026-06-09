@@ -1,0 +1,44 @@
+- baseInfo:
+    api_name: 商品列表
+    url: /coupApply/cms/goodsList
+    method: Get
+    header:
+      Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+      token: ${get_extract_data(cookie)}
+  testCase:
+    - case_name: 获取商品列表-正常分页
+      params:
+        msgType: getHandsetListOfCust
+        page: 1
+        size: 20
+      validation:
+        - contains: { 'error_code': '0000' }
+      extract_list:
+        goodsId: $.goodsList[*].goodsId
+    - case_name: 获取商品列表-第二页
+      params:
+        msgType: getHandsetListOfCust
+        page: 2
+        size: 20
+      validation:
+        - contains: { 'error_code': '0000' }
+    - case_name: 获取商品列表-自定义每页数量
+      params:
+        msgType: getHandsetListOfCust
+        page: 1
+        size: 5
+      validation:
+        - contains: { 'error_code': '0000' }
+    - case_name: 获取商品列表-页码为0
+      params:
+        msgType: getHandsetListOfCust
+        page: 0
+        size: 20
+      validation:
+        - contains: { 'error_code' }
+    - case_name: 获取商品列表-缺少msgType参数
+      params:
+        page: 1
+        size: 20
+      validation:
+        - contains: { 'error_code' }

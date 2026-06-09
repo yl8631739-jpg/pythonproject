@@ -1,0 +1,39 @@
+- baseInfo:
+    api_name: 分页查看订单列表
+    url: /coupApply/cms/findOrderByUser
+    method: post
+    header:
+      Content-Type: application/json;charset=UTF-8
+  testCase:
+    - case_name: 正常查询用户订单列表
+      json:
+        userId: ${get_extract_data(userId)}
+        page: 1
+        size: 10
+        timeStamp: ${timestamp()}
+      validation:
+        - eq: { 'error_code': '0000' }
+        - contains: { 'orderList' }
+    - case_name: 查询不存在的用户订单
+      json:
+        userId: '999999999'
+        page: 1
+        size: 10
+        timeStamp: ${timestamp()}
+      validation:
+        - eq: { 'error_code': '0000' }
+    - case_name: 查询订单列表-页码为0
+      json:
+        userId: ${get_extract_data(userId)}
+        page: 0
+        size: 10
+        timeStamp: ${timestamp()}
+      validation:
+        - contains: { 'error_code' }
+    - case_name: 查询订单列表-缺少userId参数
+      json:
+        page: 1
+        size: 10
+        timeStamp: ${timestamp()}
+      validation:
+        - contains: { 'error_code' }
